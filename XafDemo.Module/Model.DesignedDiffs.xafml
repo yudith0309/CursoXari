@@ -1,12 +1,47 @@
-﻿<?xml version="1.0" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="XafDemo">
   <BOModel>
     <Class Name="DevExpress.Persistent.BaseImpl.PermissionPolicy.PermissionPolicyUser" Caption="Base User" />
   </BOModel>
+  <NavigationItems>
+    <Items>
+      <Item Id="Default">
+        <Items>
+          <Item Id="@6b1b2b2f-0909-4075-a686-04737d6f74b0" Caption="Demo" ImageName="BO_Localization" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Cliente Simple" ImageName="BO_Customer" Caption="Cliente Simple" ViewId="ClientePrueba" IsNewNode="True" />
+              <Item Id="Cliente_ListView" ViewId="Cliente_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="Factura_ListView" ViewId="Factura_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Cliente_ListView" Removed="True" />
+          <Item Id="Factura_ListView" Removed="True" />
+        </Items>
+      </Item>
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="24.1.7.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="24.1.7.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="24.1.7.0" IsNewNode="True" />
+  </SchemaModules>
   <Views>
     <ListView Id="ApplicationUser_ListView" Caption="Users" />
+    <DetailView Id="Cliente Prueba Detail" ClassName="XafDemo.Module.BusinessObjects.Cliente" ImageName="BO_MyDetails" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True" />
+      </Layout>
+    </DetailView>
+    <ListView Id="ClientePrueba" ClassName="XafDemo.Module.BusinessObjects.Cliente" DetailViewID="Cliente Prueba Detail" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+      </Columns>
+    </ListView>
   </Views>
 </Application>
