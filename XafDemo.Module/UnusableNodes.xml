@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="ClienteNombreDetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Cliente">
+              <LayoutGroup Id="Cliente_col2">
+                <LayoutItem Id="Activo" ViewItem="Activo" />
+              </LayoutGroup>
+              <LayoutGroup Id="Cliente_col1">
+                <LayoutItem Id="PropertyName.Ciudad" ViewItem="PropertyName.Ciudad" />
+                <LayoutItem Id="PropertyName.Colonia" ViewItem="PropertyName.Colonia" />
+                <LayoutItem Id="PropertyName.Calle" ViewItem="PropertyName.Calle" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

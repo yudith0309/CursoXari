@@ -11,11 +11,31 @@
             <Items IsNewNode="True">
               <Item Id="Cliente Simple" ImageName="BO_Customer" Caption="Cliente Simple" ViewId="ClientePrueba" IsNewNode="True" />
               <Item Id="Cliente_ListView" ViewId="Cliente_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="Direccion_ListView" ViewId="Direccion_ListView" ObjectKey="" IsNewNode="True" />
               <Item Id="Factura_ListView" ViewId="Factura_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
+          <Item Id="Categoria_ListView" Removed="True" />
           <Item Id="Cliente_ListView" Removed="True" />
+          <Item Id="Direccion_ListView" Removed="True" />
+          <Item Id="DocumentoCredito_ListView" Removed="True" />
+          <Item Id="DocumentoFactura_ListView" Removed="True" />
           <Item Id="Factura_ListView" Removed="True" />
+          <Item Id="FacturaDetalle_ListView" Removed="True" />
+          <Item Id="GroupCreditoFactura" Caption="GroupCreditoFactura" ImageName="State_Validation_Valid" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="DocumentoCredito_ListView" ViewId="DocumentoCredito_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="DocumentoFactura_ListView" ViewId="DocumentoFactura_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="GroupProducto" Caption="GroupProducto" ImageName="ProductOrderDetail-21" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Categoria_ListView" ViewId="Categoria_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="FacturaDetalle_ListView" ViewId="FacturaDetalle_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="Producto_ListView" ViewId="Producto_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
+          <Item Id="Producto_ListView" Removed="True" />
         </Items>
       </Item>
     </Items>
