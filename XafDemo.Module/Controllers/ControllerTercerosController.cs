@@ -1,28 +1,27 @@
 ﻿using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.Actions;
+using DevExpress.ExpressApp.SystemModule;
 
-namespace XafDemo.Win.Controllers;
+namespace XafDemo.Module.Controllers;
 
-//xcv Para crear clases ViewController
-public class MyViewController : ViewController
+//xcv
+
+public class ControllerTercerosController : ViewController
 {
-    SimpleAction MostrarMensaje;
-    public MyViewController() : base()
+    public ControllerTercerosController() : base()
     {
         // Target required Views (use the TargetXXX properties) and create their Actions.
-        //xas Para Actions 
 
-        MostrarMensaje = new SimpleAction(this, "MostrarBoton", "View");
-        MostrarMensaje.Execute += MostrarMensaje_Execute;
+        this.TargetViewType = ViewType.DetailView;
 
-    }
-    private void MostrarMensaje_Execute(object sender, SimpleActionExecuteEventArgs e)
-    {
-        System.Windows.Forms.MessageBox.Show("Hola Mundo");
     }
     protected override void OnActivated()
     {
         base.OnActivated();
+        var ModificationsController = this.Frame.GetController<ModificationsController>();
+        if (ModificationsController != null)
+        {
+            ModificationsController.SaveAction.Caption = "Guardar";
+        }
         // Perform various tasks depending on the target View.
     }
     protected override void OnDeactivated()
@@ -36,4 +35,3 @@ public class MyViewController : ViewController
         // Access and customize the target View control.
     }
 }
-

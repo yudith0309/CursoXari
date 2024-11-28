@@ -38,9 +38,36 @@
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True" />
       </Layout>
     </DetailView>
+    <DetailView Id="ClienteNombreDetailView" ClassName="XafDemo.Module.BusinessObjects.Cliente" ImageName="ChartFullStackedArea" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Nombre" PropertyName="Nombre" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="Cliente" Index="0" Direction="Horizontal" ShowCaption="True" IsNewNode="True">
+              <LayoutGroup Id="Cliente_col1" Index="0" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="PropertyName.Calle" ViewItem="PropertyName.Calle" Index="0" IsNewNode="True" />
+                <LayoutItem Id="PropertyName.Colonia" ViewItem="PropertyName.Colonia" Index="1" IsNewNode="True" />
+                <LayoutItem Id="PropertyName.Ciudad" ViewItem="PropertyName.Ciudad" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Cliente_col2" Index="1" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="Nombre" ViewItem="Nombre" Index="0" IsNewNode="True" />
+                <LayoutItem Id="Activo" ViewItem="Activo" Index="1" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="ClientePrueba" ClassName="XafDemo.Module.BusinessObjects.Cliente" DetailViewID="Cliente Prueba Detail" IsNewNode="True">
       <Columns IsNewNode="True">
         <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <ListView Id="Vista Cliente Nombre" ClassName="XafDemo.Module.BusinessObjects.Cliente" ImageName="BO_Role" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Nombre" PropertyName="Nombre" Index="4" IsNewNode="True" />
       </Columns>
     </ListView>
   </Views>
