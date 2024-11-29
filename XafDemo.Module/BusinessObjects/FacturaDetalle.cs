@@ -1,5 +1,6 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace XafDemo.Module.BusinessObjects;
@@ -19,6 +20,7 @@ public class FacturaDetalle : BaseObject
         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
     }
     //xpa
+    decimal subTotal;
     decimal total;
     decimal precioUnitario;
     int cantidad;
@@ -38,7 +40,9 @@ public class FacturaDetalle : BaseObject
         get => producto;
         set => SetPropertyValue(nameof(Producto), ref producto, value);
     }
-    //xpi        
+    //xpi
+    
+    [RuleRange("RuleRange_Cantidad", DefaultContexts.Save, 0.01, double.MaxValue, "La cantidad debe ser mayor a 0.")]
     public int Cantidad
     {
         get => cantidad;
@@ -51,7 +55,12 @@ public class FacturaDetalle : BaseObject
         get => precioUnitario;
         set => SetPropertyValue(nameof(PrecioUnitario), ref precioUnitario, value);
     }
-
+    
+    public decimal SubTotal
+    {
+        get => subTotal;
+        set => SetPropertyValue(nameof(SubTotal), ref subTotal, value);
+    }
     protected override void OnChanged(string propertyName, object oldValue, object newValue)
     {
         if (propertyName == nameof(Factura))
@@ -68,6 +77,7 @@ public class FacturaDetalle : BaseObject
         if (propertyName == nameof(Cantidad) || propertyName == nameof(PrecioUnitario))
         {
             this.Total = Cantidad * PrecioUnitario;
+            this.SubTotal = Cantidad * PrecioUnitario;
         }
         base.OnChanged(propertyName, oldValue, newValue);
     }
@@ -76,4 +86,5 @@ public class FacturaDetalle : BaseObject
         get => total;
         set => SetPropertyValue(nameof(Total), ref total, value);
     }
+    
 }

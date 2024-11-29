@@ -1,5 +1,6 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace XafDemo.Module.BusinessObjects;
@@ -18,6 +19,16 @@ public class Categoria : BaseObject
     {
         base.AfterConstruction();
         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
+    }
+
+
+    string nombre;
+    [RuleRequiredField("RuleRequiredField_Nombre", DefaultContexts.Save, "El Nombre es obligatorio.")]
+    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+    public string Nombre
+    {
+        get => nombre;
+        set => SetPropertyValue(nameof(Nombre), ref nombre, value);
     }
 
     //xpcl

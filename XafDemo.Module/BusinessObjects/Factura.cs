@@ -1,5 +1,6 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace XafDemo.Module.BusinessObjects;
@@ -30,6 +31,7 @@ public class Factura : BaseObject
         set => SetPropertyValue(nameof(Fecha), ref fecha, value);
     }
 
+    [RuleRequiredField("RuleRequiredField_Cliente", DefaultContexts.Save, "No se puede guardar una factura sin cliente.")]
     public Cliente Cliente
     {
         get => cliente;
@@ -45,4 +47,6 @@ public class Factura : BaseObject
             return GetCollection<FacturaDetalle>(nameof(FacturaDetalles));
         }
     }
+
 }
+
