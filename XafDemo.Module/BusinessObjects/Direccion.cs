@@ -1,4 +1,5 @@
-﻿using DevExpress.Persistent.Base;
+﻿using DevExpress.ExpressApp;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 
@@ -19,6 +20,7 @@ public class Direccion : BaseObject
         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
     }
 
+    ApplicationUser usuarioOwner;
     string ciudad;
     string colonia;
     string calle;
@@ -41,5 +43,18 @@ public class Direccion : BaseObject
     {
         get => ciudad;
         set => SetPropertyValue(nameof(Ciudad), ref ciudad, value);
+    }
+
+    //xpo    
+    public ApplicationUser UsuarioOwner
+    {
+        get => usuarioOwner;
+        set => SetPropertyValue(nameof(UsuarioOwner), ref usuarioOwner, value);
+    }
+
+    protected override void OnSaved()
+    {
+        UsuarioOwner = Session.GetObjectByKey<ApplicationUser>(SecuritySystem.CurrentUserId);
+        base.OnSaving();
     }
 }
