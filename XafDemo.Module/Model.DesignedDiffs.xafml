@@ -15,8 +15,16 @@
               <Item Id="Factura_ListView" ViewId="Factura_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
+          <Item Id="AgregadoEspecial" Caption="AgregadoEspecial" ImageName="ChartType_AreaStacked100" IsNewNode="True">
+            <Items IsNewNode="True">
+              <Item Id="Cliente_Especial_ListView" ViewId="Cliente_Especial_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="ProductosEspecial_ListView" ViewId="ProductosEspecial_ListView" ObjectKey="" IsNewNode="True" />
+            </Items>
+          </Item>
           <Item Id="Categoria_ListView" Removed="True" />
+          <Item Id="Cliente_Especial_ListView" Removed="True" />
           <Item Id="Cliente_ListView" Removed="True" />
+          <Item Id="DemoParaController_ListView" Removed="True" />
           <Item Id="Direccion_ListView" Removed="True" />
           <Item Id="DocumentoCredito_ListView" Removed="True" />
           <Item Id="DocumentoFactura_ListView" Removed="True" />
@@ -24,8 +32,10 @@
           <Item Id="FacturaDetalle_ListView" Removed="True" />
           <Item Id="GroupCreditoFactura" Caption="GroupCreditoFactura" ImageName="State_Validation_Valid" IsNewNode="True">
             <Items IsNewNode="True">
+              <Item Id="DemoParaController_ListView" ViewId="DemoParaController_ListView" ObjectKey="" IsNewNode="True" />
               <Item Id="DocumentoCredito_ListView" ViewId="DocumentoCredito_ListView" ObjectKey="" IsNewNode="True" />
               <Item Id="DocumentoFactura_ListView" ViewId="DocumentoFactura_ListView" ObjectKey="" IsNewNode="True" />
+              <Item Id="TextValidation_ListView" ViewId="TextValidation_ListView" ObjectKey="" IsNewNode="True" />
             </Items>
           </Item>
           <Item Id="GroupProducto" Caption="GroupProducto" ImageName="ProductOrderDetail-21" IsNewNode="True">
@@ -36,6 +46,8 @@
             </Items>
           </Item>
           <Item Id="Producto_ListView" Removed="True" />
+          <Item Id="ProductosEspecial_ListView" Removed="True" />
+          <Item Id="TextValidation_ListView" Removed="True" />
         </Items>
       </Item>
     </Items>

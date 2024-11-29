@@ -7,12 +7,13 @@ namespace XafDemo.Module.BusinessObjects;
 
 [DefaultClassOptions]
 
-[RuleCombinationOfPropertiesIsUnique("Nombre Apellidos unicos", DefaultContexts.Save, "Nombre, Apellidos", CustomMessageTemplate = "El nombre y los apellidos deben ser unicos")]
-public class Cliente : BaseObject
+[RuleCombinationOfPropertiesIsUnique("Nombre Apellidos", DefaultContexts.Save, "Nombre, Apellidos", CustomMessageTemplate = "El nombre y los apellidos deben ser unicos")]
+
+public class Cliente_Especial : BaseObject
 { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
     // Use CodeRush to create XPO classes and properties with a few keystrokes.
     // https://docs.devexpress.com/CodeRushForRoslyn/118557
-    public Cliente(Session session)
+    public Cliente_Especial(Session session)
         : base(session)
     {
     }
@@ -22,23 +23,12 @@ public class Cliente : BaseObject
         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
     }
 
-    int edad;
+    string telefono;
+    string email;
     string apellidos;
     string nombre;
-    bool activo;
-    Direccion propertyName;
 
-    [ExpandObjectMembers(ExpandObjectMembers.Always)]
-    [DevExpress.Xpo.Aggregated()]
-    [Persistent("DireccionObjeto")]
-    public Direccion PropertyName
-    {
-        get => propertyName;
-        set => SetPropertyValue(nameof(PropertyName), ref propertyName, value);
-    }
-
-    [RuleRequiredField("Rule.Requared.Field1", "Procesar", "El campo 'Nombre' es obligatorio.")]
-    [RuleRequiredField("Rule.Requuared.Field2", DefaultContexts.Save, "El campo 'Nombre' es obligatorio.")]
+    [RuleRequiredField("NombreRequired", DefaultContexts.Save, CustomMessageTemplate = "El nombre es obligatorio.")]
     [Size(SizeAttribute.DefaultStringMappingFieldSize)]
     public string Nombre
     {
@@ -46,22 +36,26 @@ public class Cliente : BaseObject
         set => SetPropertyValue(nameof(Nombre), ref nombre, value);
     }
 
+    [RuleRequiredField("ApellidoRequired", DefaultContexts.Save, CustomMessageTemplate = "El apellido es obligatorio.")]
     [Size(SizeAttribute.DefaultStringMappingFieldSize)]
     public string Apellidos
     {
         get => apellidos;
         set => SetPropertyValue(nameof(Apellidos), ref apellidos, value);
     }
-    public bool Activo
-    {
-        get => activo;
-        set => SetPropertyValue(nameof(Activo), ref activo, value);
-    }
 
-    [RuleRange("LastSevenDays_RuleRange", DefaultContexts.Save, 0, 115, CustomMessageTemplate = "La edad debe estar en el rango de 0 a 115")]
-    public int Edad
+    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+    public string Email
     {
-        get => edad;
-        set => SetPropertyValue(nameof(Edad), ref edad, value);
+        get => email;
+        set => SetPropertyValue(nameof(Email), ref email, value);
+    }
+    
+    [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+    [RuleRange("TelefonoLongitud", DefaultContexts.Save, 10, 15, CustomMessageTemplate = "El teléfono debe tener entre 10 y 15 caracteres.")]
+    public string Telefono
+    {
+        get => telefono;
+        set => SetPropertyValue(nameof(Telefono), ref telefono, value);
     }
 }

@@ -1,15 +1,18 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 
 namespace XafDemo.Module.BusinessObjects;
 
 [DefaultClassOptions]
-public class Producto : BaseObject
+[RuleCriteria("Precio Mayor que 0", DefaultContexts.Save, "Precio > 0 AND Stock >= 0", CustomMessageTemplate = "El precio debe ser mayor que 0.")]
+[RuleCriteria("Stock Mayor que 0", DefaultContexts.Save, "Stock >= 0", CustomMessageTemplate = "El stock debe ser mayor que 0.")]
+public class ProductosEspecial : BaseObject
 { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
     // Use CodeRush to create XPO classes and properties with a few keystrokes.
     // https://docs.devexpress.com/CodeRushForRoslyn/118557
-    public Producto(Session session)
+    public ProductosEspecial(Session session)
         : base(session)
     {
     }
@@ -19,11 +22,10 @@ public class Producto : BaseObject
         // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
     }
 
-    decimal precioUnitario;
-    Categoria categoria;
-    string codigo;
-    string descripcion;
+    string stock;
+    double precio;
     string nombre;
+    Categoria categoria;
 
     [Size(SizeAttribute.DefaultStringMappingFieldSize)]
     public string Nombre
@@ -32,29 +34,23 @@ public class Producto : BaseObject
         set => SetPropertyValue(nameof(Nombre), ref nombre, value);
     }
 
+    public double Precio
+    {
+        get => precio;
+        set => SetPropertyValue(nameof(Precio), ref precio, value);
+    }
+
     [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-    public string Descripcion
+    public string Stock
     {
-        get => descripcion;
-        set => SetPropertyValue(nameof(Descripcion), ref descripcion, value);
+        get => stock;
+        set => SetPropertyValue(nameof(Stock), ref stock, value);
     }
 
-    [Size(10)]
-    public string Codigo
-    {
-        get => codigo;
-        set => SetPropertyValue(nameof(Codigo), ref codigo, value);
-    }
-
-    [Association("Categoria-Productos")]
+    [Association("Categoria-ProductosEspecials")]
     public Categoria Categoria
     {
         get => categoria;
         set => SetPropertyValue(nameof(Categoria), ref categoria, value);
-    }
-    public decimal PrecioUnitario
-    {
-        get => precioUnitario;
-        set => SetPropertyValue(nameof(PrecioUnitario), ref precioUnitario, value);
     }
 }
